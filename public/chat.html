@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+    crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/chat.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".siderbar_menu li").click(function(){
+			  $(".siderbar_menu li").removeClass("active");
+			  $(this).addClass("active");
+			});
+
+			$(".hamburger").click(function(){
+			  $(".wrapper").addClass("active");
+			});
+
+			$(".close, .bg_shadow").click(function(){
+			  $(".wrapper").removeClass("active");
+			});
+		});
+	</script>
+    <title>Just Chatting</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="bg_shadow"></div>
+            <div class="sidebar_inner">
+                <div class="close">
+                    <i class="fas fa-times"></i>
+                </div>
+
+                <div class="head">
+                    <div class="logo-img">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="chat">
+                        <h3 class="title">Stanza nome:</h3>
+                        <h2 id="room-name"></h2>
+                    </div>
+                </div>
+                <div class="sidebar_user">
+                    <h3 class="title"><i class="fas fa-users"></i> Utenti</h3>
+                    <ul id="users"></ul>
+                    <div class="logout-btn">
+                        <a href="index.html">Esci</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Finish sidebar-->
+        <div class="main-container">
+            <div class="navbar">
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            <div class="logo">
+            <a href="index.html">Just Chatting</a>
+            </div>
+            </div>
+            <div class="chat-messages">
+            </div>
+            <div class="footer">
+                <form id="chat-form">
+                    <input 
+                    id="msg"
+                    type="text"
+                    placeholder="Scrivi il Messaggio..."
+                    required
+                    autocomplete="off"/>
+                    <button class="btn"><i class="fas fa-paper-plane"></i> Invia</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <!--Script socket.io-->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
+        integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
+        crossorigin="anonymous"
+    ></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
